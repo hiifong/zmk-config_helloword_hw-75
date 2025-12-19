@@ -3,6 +3,7 @@
 
 config HW75_PROTO
 	bool "Nanopb generated sources"
+	select NANOPB
 
 config HW75_PROTO_USB_COMM
 	bool

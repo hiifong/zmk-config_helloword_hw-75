@@ -1,27 +1,18 @@
 # Copyright (c) 2022-2023 XiNGRZ
 # SPDX-License-Identifier: MIT
 
-zephyr_library_named(hw75_proto)
-
 if(CONFIG_HW75_PROTO)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ZEPHYR_NANOPB_MODULE_DIR}/extra)
-find_package(Nanopb REQUIRED)
+zephyr_library_named(hw75_proto)
 
-set(PROTO_DEFS)
+include(${ZEPHYR_BASE}/modules/nanopb/nanopb.cmake)
 
 if(CONFIG_HW75_PROTO_USB_COMM)
-    list(APPEND PROTO_DEFS usb_comm.proto)
+  zephyr_nanopb_sources(hw75_proto usb_comm.proto)
 endif()
 
 if(CONFIG_HW75_PROTO_UART_COMM)
-    list(APPEND PROTO_DEFS uart_comm.proto)
+  zephyr_nanopb_sources(hw75_proto uart_comm.proto)
 endif()
-
-nanopb_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_DEFS})
-zephyr_library_sources(${PROTO_SRCS} ${PROTO_HDRS})
-
-zephyr_include_directories(${NANOPB_INCLUDE_DIRS})
-zephyr_include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 endif() # CONFIG_HW75_PROTO
