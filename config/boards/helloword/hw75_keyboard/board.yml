@@ -1,0 +1,12 @@
+board:
+  name: hw75_keyboard
+  full_name: HW-75 Keyboard
+  vendor: helloword
+  revision:
+    format: major.minor.patch
+    default: 1.2.0
+    revisions:
+      - name: 1.1.0
+      - name: 1.2.0
+  socs:
+    - name: stm32f103xb

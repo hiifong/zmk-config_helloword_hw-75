@@ -1,0 +1,12 @@
+board:
+  name: hw75_dynamic
+  full_name: HW-75 Dynamic
+  vendor: helloword
+  revision:
+    format: letter
+    default: B
+    revisions:
+      - name: A
+      - name: B
+  socs:
+    - name: stm32f405xx
