@@ -14,16 +14,15 @@
 / {
 	macros {
 		tasks_forward: tasks-forward {
-			label = "TAKS_FORWARD";
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
 			bindings = <&macro_press   &kp LALT>,
 				   <&macro_tap     &kp TAB>,
 				   <&macro_release &kp LALT>;
+			display-name = "Tasks Forward";
 		};
 
 		tasks_backward: tasks-backward {
-			label = "TAKS_BACKWARD";
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
 			bindings = <&macro_press   &kp LALT>,
@@ -31,13 +30,13 @@
 				   <&macro_tap     &kp TAB>,
 				   <&macro_release &kp LSHIFT>,
 				   <&macro_release &kp LALT>;
+			display-name = "Tasks Backward";
 		};
 	};
 
 	behaviors {
 		switch_tasks: switch-tasks {
 			compatible = "zmk,behavior-sensor-rotate";
-			label = "SWITCH_TASKS";
 			#sensor-binding-cells = <0>;
 			bindings = <&tasks_forward>, <&tasks_backward>;
 		};
@@ -47,21 +46,21 @@
 		compatible = "zmk,keymap-ext", "zmk,keymap";
 
 		volume {
-			label = "音量";
+			display-name = "音量";
 			icon = [EF 86 AE];
 			bindings = <&lvkp LV_KEY_PREV &lvkp LV_KEY_NEXT>;
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 
 		scroll {
-			label = "滚动";
+			display-name = "滚动";
 			icon = [EF 86 8A];
 			bindings = <&trans &trans>;
 			sensor-bindings = <&inc_dec_mw MW_DN(1) MW_UP(1)>;
 		};
 
 		tasks {
-			label = "窗口";
+			display-name = "窗口";
 			icon = [EF 85 9E];
 			bindings = <&trans &trans>;
 			sensor-bindings = <&switch_tasks>;
@@ -69,14 +68,14 @@
 		};
 
 		arrow_vertical {
-			label = "上下";
+			display-name = "上下";
 			icon = [EF 86 93];
 			bindings = <&trans &trans>;
 			sensor-bindings = <&inc_dec_kp UP DOWN>;
 		};
 
 		arrow_horizontal {
-			label = "左右";
+			display-name = "左右";
 			icon = [EF 86 9C];
 			bindings = <&trans &trans>;
 			sensor-bindings = <&inc_dec_kp LEFT RIGHT>;

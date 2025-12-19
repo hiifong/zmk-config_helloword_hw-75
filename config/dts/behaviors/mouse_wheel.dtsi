@@ -7,8 +7,8 @@
 	behaviors {
 		/omit-if-no-ref/ mw: behavior_mouse_wheel {
 			compatible = "zmk,behavior-mouse-wheel";
-			label = "MOUSE_WHEEL";
 			#binding-cells = <1>;
+			display-name = "Mouse Wheel";
 		};
 	};
 };
