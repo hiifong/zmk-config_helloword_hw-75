@@ -150,6 +150,43 @@
 		compatible = "zmk,uart-slip";
 		uart = <&usart2>;
 	};
+
+	mipi-dbi {
+		compatible = "zephyr,mipi-dbi-spi";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		spi-dev = <&spi2>;
+		dc-gpios = <&gpioc 0 GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpioc 2 GPIO_ACTIVE_LOW>;
+		write-only;
+
+		ssd16xx: ssd16xx@0 {
+			compatible = "solomon,ssd1675a";
+
+			reg = <0>;
+			mipi-max-frequency = <4000000>;
+
+			width = <296>;
+			height = <128>;
+
+			busy-gpios = <&gpioc 1 GPIO_ACTIVE_HIGH>;
+
+			full {
+				/* VGH = 19V */
+				gdv = [15];
+
+				/* VSH1 = 15V, VSH2 = 5V, VSL = -15V */
+				sdv = [41 a8 32];
+
+				/* VDB = LUT3 */
+				border-waveform = <0x03>;
+
+				/* 128x296, 50Hz */
+				dummy-line = <0x30>;
+				gate-line-width = <0x0a>;
+			};
+		};
+	};
 };
 
 &clk_hse {
@@ -204,35 +241,6 @@
 	status = "okay";
 
 	cs-gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
-
-	ssd16xx: ssd16xx@0 {
-		compatible = "solomon,ssd1675a";
-
-		reg = <0>;
-		spi-max-frequency = <4000000>;
-
-		width = <296>;
-		height = <128>;
-
-		reset-gpios = <&gpioc 2 GPIO_ACTIVE_LOW>;
-		dc-gpios = <&gpioc 0 GPIO_ACTIVE_LOW>;
-		busy-gpios = <&gpioc 1 GPIO_ACTIVE_HIGH>;
-
-		full {
-			/* VGH = 19V */
-			gdv = [15];
-
-			/* VSH1 = 15V, VSH2 = 5V, VSL = -15V */
-			sdv = [41 a8 32];
-
-			/* VDB = LUT3 */
-			border-waveform = <0x03>;
-
-			/* 128x296, 50Hz */
-			dummy-line = <0x30>;
-			gate-line-width = <0x0a>;
-		};
-	};
 };
 
 &spi3 {
