@@ -16,7 +16,7 @@
 
 #include <pb_encode.h>
 
-#define KNOB_NODE DT_ALIAS(knob)
+#define KNOB_NODE  DT_ALIAS(knob)
 #define MOTOR_NODE DT_PHANDLE(KNOB_NODE, motor)
 
 #define DEG(deg) (deg / 360.0f * (PI * 2.0f))
@@ -26,7 +26,7 @@
 static const struct device *knob = DEVICE_DT_GET(KNOB_NODE);
 static const struct device *motor = DEVICE_DT_GET(MOTOR_NODE);
 
-static const float default_torque_limits[] = { DT_FOREACH_CHILD(KNOB_NODE, PROFILE_TORQUE_LIMIT) };
+static const float default_torque_limits[] = {DT_FOREACH_CHILD(KNOB_NODE, PROFILE_TORQUE_LIMIT)};
 
 static struct motor_state state = {};
 

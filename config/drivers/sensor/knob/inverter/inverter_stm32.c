@@ -122,7 +122,7 @@ static int inverter_stm32_init(const struct device *dev)
 		return -EIO;
 	}
 
-	TIM_MasterConfigTypeDef master_config = { 0 };
+	TIM_MasterConfigTypeDef master_config = {0};
 	master_config.MasterOutputTrigger = TIM_TRGO_OC4REF;
 	master_config.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
 	if (HAL_TIMEx_MasterConfigSynchronization(&data->th, &master_config) != HAL_OK) {
@@ -130,7 +130,7 @@ static int inverter_stm32_init(const struct device *dev)
 		return -EIO;
 	}
 
-	TIM_OC_InitTypeDef oc = { 0 };
+	TIM_OC_InitTypeDef oc = {0};
 	oc.OCMode = TIM_OCMODE_PWM1;
 	oc.Pulse = 0;
 	oc.OCPolarity = TIM_OCPOLARITY_HIGH;
@@ -146,7 +146,7 @@ static int inverter_stm32_init(const struct device *dev)
 		}
 	}
 
-	TIM_BreakDeadTimeConfigTypeDef bdt = { 0 };
+	TIM_BreakDeadTimeConfigTypeDef bdt = {0};
 	bdt.OffStateRunMode = TIM_OSSR_DISABLE;
 	bdt.OffStateIDLEMode = TIM_OSSI_DISABLE;
 	bdt.LockLevel = TIM_LOCKLEVEL_OFF;
@@ -172,7 +172,7 @@ static const struct inverter_driver_api inverter_stm32_driver_api = {
 	struct inverter_stm32_data inverter_stm32_data_##n;                                        \
                                                                                                    \
 	static const struct inverter_stm32_config inverter_stm32_config_##n = {                    \
-		.enable_gpio = GPIO_DT_SPEC_INST_GET_OR(n, enable_gpios, { 0 }),                   \
+		.enable_gpio = GPIO_DT_SPEC_INST_GET_OR(n, enable_gpios, {0}),                     \
 		.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(n)),                            \
 		.pwm_period = DT_INST_PROP(n, pwm_period),                                         \
 		.pwm_channels = DT_INST_PROP(n, pwm_channels),                                     \

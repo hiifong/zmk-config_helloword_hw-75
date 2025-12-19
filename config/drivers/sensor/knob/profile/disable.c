@@ -104,7 +104,7 @@ static const struct knob_profile_api knob_disable_api = {
 
 static struct knob_disable_data knob_disable_data;
 
-static const struct knob_disable_config knob_disable_cfg = { KNOB_PROFILE_CFG_INIT };
+static const struct knob_disable_config knob_disable_cfg = {KNOB_PROFILE_CFG_INIT};
 
 DEVICE_DT_INST_DEFINE(0, knob_disable_init, NULL, &knob_disable_data, &knob_disable_cfg,
 		      POST_KERNEL, CONFIG_SENSOR_INIT_PRIORITY, &knob_disable_api);

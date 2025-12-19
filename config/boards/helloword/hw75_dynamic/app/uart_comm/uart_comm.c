@@ -28,7 +28,7 @@ static struct {
 	uart_comm_Action action;
 	uart_comm_handler_t handler;
 } handlers[] = {
-	{ uart_comm_Action_FN_STATE_CHANGED, handle_fn_state },
+	{uart_comm_Action_FN_STATE_CHANGED, handle_fn_state},
 };
 
 static void uart_comm_handle(uint32_t len)

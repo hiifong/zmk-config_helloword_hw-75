@@ -22,15 +22,15 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include "knob_app.h"
 
-#define KNOB_NODE DT_ALIAS(knob)
+#define KNOB_NODE  DT_ALIAS(knob)
 #define MOTOR_NODE DT_PHANDLE(KNOB_NODE, motor)
 
 #define KNOB_APP_THREAD_STACK_SIZE 1024
-#define KNOB_APP_THREAD_PRIORITY 10
+#define KNOB_APP_THREAD_PRIORITY   10
 
-#define KEYMAP_NODE DT_INST(0, zmk_keymap)
+#define KEYMAP_NODE                  DT_INST(0, zmk_keymap)
 #define KEYMAP_LAYER_CHILD_LEN(node) 1 +
-#define KEYMAP_LAYERS_NUM (DT_FOREACH_CHILD(KEYMAP_NODE, KEYMAP_LAYER_CHILD_LEN) 0)
+#define KEYMAP_LAYERS_NUM            (DT_FOREACH_CHILD(KEYMAP_NODE, KEYMAP_LAYER_CHILD_LEN) 0)
 
 #define LAYER_LABEL(node)                                                                          \
 	COND_CODE_0(DT_NODE_HAS_PROP(node, label), (NULL), (DT_PROP(node, label))),
@@ -46,10 +46,10 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 		.torque_limit = (float)DT_PROP(LAYER_PROFILE(node), torque_limit_mv) / 1000.0f,    \
 	},
 
-static const char *layer_names[KEYMAP_LAYERS_NUM] = { DT_FOREACH_CHILD(KEYMAP_NODE, LAYER_LABEL) };
+static const char *layer_names[KEYMAP_LAYERS_NUM] = {DT_FOREACH_CHILD(KEYMAP_NODE, LAYER_LABEL)};
 
-static const struct knob_pref layer_prefs[KEYMAP_LAYERS_NUM] = { DT_FOREACH_CHILD(KEYMAP_NODE,
-										  LAYER_PREF) };
+static const struct knob_pref layer_prefs[KEYMAP_LAYERS_NUM] = {
+	DT_FOREACH_CHILD(KEYMAP_NODE, LAYER_PREF)};
 
 static const struct device *knob = DEVICE_DT_GET(KNOB_NODE);
 static const struct device *motor = DEVICE_DT_GET(MOTOR_NODE);
@@ -178,7 +178,8 @@ static int knob_app_settings_load_cb(const char *name, size_t len, settings_read
 					memcpy(&knob_prefs[j], &loader[i],
 					       sizeof(struct knob_pref));
 
-					LOG_DBG("Loaded knob pref %d for layer %d \"%s\": mode=%d, ppr=%d, torque_limit=%.03f",
+					LOG_DBG("Loaded knob pref %d for layer %d \"%s\": mode=%d, "
+						"ppr=%d, torque_limit=%.03f",
 						i, j, knob_prefs[j].name, knob_prefs[j].mode,
 						knob_prefs[j].ppr, knob_prefs[j].torque_limit);
 

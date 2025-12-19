@@ -68,7 +68,7 @@ static const struct knob_profile_api knob_spin_api = {
 	.tick = knob_spin_tick,
 };
 
-static const struct knob_spin_config knob_spin_cfg = { KNOB_PROFILE_CFG_INIT };
+static const struct knob_spin_config knob_spin_cfg = {KNOB_PROFILE_CFG_INIT};
 
 DEVICE_DT_INST_DEFINE(0, knob_spin_init, NULL, NULL, &knob_spin_cfg, POST_KERNEL,
 		      CONFIG_SENSOR_INIT_PRIORITY, &knob_spin_api);

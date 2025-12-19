@@ -172,8 +172,9 @@ static void motor_close_loop_control_tick(const struct device *dev)
 	float estimate_angle = motor_get_estimate_angle(dev);
 	float estimate_velocity = motor_get_estimate_velocity(dev);
 
-	if (!data->enable)
+	if (!data->enable) {
 		return;
+	}
 
 	switch (data->control.mode) {
 	case TORQUE:
@@ -201,8 +202,9 @@ static void motor_foc_output_tick(const struct device *dev)
 
 	encoder_update(&data->encoder_state, config->encoder);
 
-	if (!data->enable)
+	if (!data->enable) {
 		return;
+	}
 
 	float electrical_angle = motor_get_electrical_angle(dev) * data->direction;
 

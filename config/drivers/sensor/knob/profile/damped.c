@@ -68,7 +68,7 @@ static const struct knob_profile_api knob_damped_api = {
 	.tick = knob_damped_tick,
 };
 
-static const struct knob_damped_config knob_damped_cfg = { KNOB_PROFILE_CFG_INIT };
+static const struct knob_damped_config knob_damped_cfg = {KNOB_PROFILE_CFG_INIT};
 
 DEVICE_DT_INST_DEFINE(0, knob_damped_init, NULL, NULL, &knob_damped_cfg, POST_KERNEL,
 		      CONFIG_SENSOR_INIT_PRIORITY, &knob_damped_api);

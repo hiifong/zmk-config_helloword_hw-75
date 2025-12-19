@@ -274,8 +274,8 @@ int knob_init(const struct device *dev)
 		.encoder_ppr = DT_INST_PROP(n, ppr),                                               \
 	};                                                                                         \
                                                                                                    \
-	static const struct device *knob_profiles_##n[] = { DT_INST_FOREACH_CHILD_STATUS_OKAY(     \
-		n, KNOB_PROFILE_ELEM) };                                                           \
+	static const struct device *knob_profiles_##n[] = {                                        \
+		DT_INST_FOREACH_CHILD_STATUS_OKAY(n, KNOB_PROFILE_ELEM)};                          \
                                                                                                    \
 	static const struct knob_config knob_config_##n = {                                        \
 		.motor = DEVICE_DT_GET(DT_INST_PHANDLE(n, motor)),                                 \

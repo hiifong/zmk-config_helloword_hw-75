@@ -64,7 +64,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding *binding,
 
 static const struct behavior_driver_api behavior_lvgl_key_press_driver_api = {
 	.binding_pressed = on_keymap_binding_pressed,
-	.binding_released = on_keymap_binding_released
+	.binding_released = on_keymap_binding_released,
 };
 
 static void indev_read_cb(lv_indev_drv_t *drv, lv_indev_data_t *data)

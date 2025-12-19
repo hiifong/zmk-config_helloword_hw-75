@@ -91,8 +91,7 @@ static void usb_comm_handle_message()
 	d2h.action = h2d.action;
 	d2h.which_payload = usb_comm_MessageD2H_nop_tag;
 
-	STRUCT_SECTION_FOREACH(usb_comm_handler_config, config)
-	{
+	STRUCT_SECTION_FOREACH(usb_comm_handler_config, config) {
 		if (config->action == h2d.action) {
 			if (config->handler(&h2d, &d2h, bytes_field, bytes_field_len)) {
 				d2h.which_payload = config->response_payload;

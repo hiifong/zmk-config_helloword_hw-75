@@ -33,8 +33,9 @@ float pid_regulate(struct pid *pid, float error)
 	float dt = (float)(time - pid->timestamp) * 1e-6f;
 
 	// Assuming 0.001s (1ms) if overflowed
-	if (dt <= 0 || dt > 0.5f)
+	if (dt <= 0 || dt > 0.5f) {
 		dt = 1e-3f;
+	}
 
 	float p = pid->p * error;
 

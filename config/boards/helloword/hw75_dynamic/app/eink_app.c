@@ -16,8 +16,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include "eink_app.h"
 
-#define EINK_NODE DT_ALIAS(eink)
-#define EINK_WIDTH DT_PROP(EINK_NODE, width)
+#define EINK_NODE   DT_ALIAS(eink)
+#define EINK_WIDTH  DT_PROP(EINK_NODE, width)
 #define EINK_HEIGHT DT_PROP(EINK_NODE, height)
 
 static const struct device *eink = DEVICE_DT_GET(EINK_NODE);

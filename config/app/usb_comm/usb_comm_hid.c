@@ -14,7 +14,7 @@ LOG_MODULE_REGISTER(usb_comm, CONFIG_HW75_USB_COMM_LOG_LEVEL);
 
 #include "usb_comm_hid.h"
 
-#define HID_COMM_REPORT_ID (1)
+#define HID_COMM_REPORT_ID    (1)
 #define HID_COMM_REPORT_COUNT (63)
 
 static const struct device *hid_dev;

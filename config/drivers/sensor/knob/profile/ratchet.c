@@ -84,7 +84,7 @@ static const struct knob_profile_api knob_ratchet_api = {
 
 static struct knob_ratchet_data knob_ratchet_data;
 
-static const struct knob_ratchet_config knob_ratchet_cfg = { KNOB_PROFILE_CFG_INIT };
+static const struct knob_ratchet_config knob_ratchet_cfg = {KNOB_PROFILE_CFG_INIT};
 
 DEVICE_DT_INST_DEFINE(0, knob_ratchet_init, NULL, &knob_ratchet_data, &knob_ratchet_cfg,
 		      POST_KERNEL, CONFIG_SENSOR_INIT_PRIORITY, &knob_ratchet_api);

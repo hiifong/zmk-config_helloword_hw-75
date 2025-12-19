@@ -179,7 +179,8 @@ static int led_strip_remap_init(const struct device *dev)
 	for (uint32_t i = 0; i < config->map_len; i++) {
 		uint32_t idx = config->map[i];
 		if (idx >= config->led_strip_len) {
-			LOG_ERR("%s: Map at index %d (%d) overflows chain-length of led-strip %s (%d)",
+			LOG_ERR("%s: Map at index %d (%d) overflows chain-length of led-strip %s "
+				"(%d)",
 				dev->name, i, idx, config->led_strip->name, config->led_strip_len);
 			return -EINVAL;
 		}
@@ -190,7 +191,8 @@ static int led_strip_remap_init(const struct device *dev)
 		indicator = &config->indicators[i];
 		for (uint32_t j = 0; j < indicator->led_cnt; j++) {
 			if (indicator->led_indexes[j] >= config->led_strip_len) {
-				LOG_ERR("%s: Index %d at indicator %s overflows chain-length of led-strip %s (%d)",
+				LOG_ERR("%s: Index %d at indicator %s overflows chain-length of "
+					"led-strip %s (%d)",
 					dev->name, indicator->led_indexes[j], indicator->label,
 					config->led_strip->name, config->led_strip_len);
 				return -EINVAL;
@@ -222,12 +224,11 @@ static const struct led_strip_driver_api led_strip_remap_api = {
 	},
 
 #define LED_STRIP_REMAP_INIT(n)                                                                    \
-	static struct led_rgb led_strip_remap_pixels_##n[DT_INST_PROP_LEN(n, map)] = { 0 };        \
-	static struct led_rgb led_strip_remap_output_##n[DT_INST_PROP_LEN(n, map)] = { 0 };        \
+	static struct led_rgb led_strip_remap_pixels_##n[DT_INST_PROP_LEN(n, map)] = {0};          \
+	static struct led_rgb led_strip_remap_output_##n[DT_INST_PROP_LEN(n, map)] = {0};          \
                                                                                                    \
 	static struct led_strip_remap_indicator_state led_strip_remap_indicator_states_##n[] = {   \
-		DT_INST_FOREACH_CHILD(n, LED_STRIP_REMAP_INDICATOR_STATE)                          \
-	};                                                                                         \
+		DT_INST_FOREACH_CHILD(n, LED_STRIP_REMAP_INDICATOR_STATE)};                        \
                                                                                                    \
 	static struct led_strip_remap_data led_strip_remap_data_##n = {                            \
 		.pixels = led_strip_remap_pixels_##n,                                              \
@@ -240,8 +241,7 @@ static const struct led_strip_driver_api led_strip_remap_api = {
 	DT_INST_FOREACH_CHILD_VARGS(n, LED_STRIP_REMAP_INDICATOR_INDEXES, n)                       \
                                                                                                    \
 	static const struct led_strip_remap_indicator led_strip_remap_indicators_##n[] = {         \
-		DT_INST_FOREACH_CHILD_VARGS(n, LED_STRIP_REMAP_INDICATOR, n)                       \
-	};                                                                                         \
+		DT_INST_FOREACH_CHILD_VARGS(n, LED_STRIP_REMAP_INDICATOR, n)};                     \
                                                                                                    \
 	static const struct led_strip_remap_config led_strip_remap_config_##n = {                  \
 		.chain_length = DT_INST_PROP(n, chain_length),                                     \

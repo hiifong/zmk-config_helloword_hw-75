@@ -64,8 +64,9 @@ float encoder_get_velocity(struct encoder_state *state)
 	float time_delta = (float)(state->angle_time - state->velocity_time) * 1e-6f;
 
 	// Assuming 0.001s (1ms) if overflowed
-	if (time_delta <= 0)
+	if (time_delta <= 0) {
 		time_delta = 1e-3f;
+	}
 
 	float velocity = ((float)rotation_count_delta * PI2 + angle_delta) / time_delta;
 

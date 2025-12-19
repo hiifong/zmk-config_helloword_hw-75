@@ -58,7 +58,7 @@ int hid_mouse_wheel_report(int direction, bool pressed)
 {
 	uint8_t val = pressed ? (uint8_t)(direction & 0xFF) : 0x00;
 
-	uint8_t report[] = { 0x00, 0x00, 0x00, val };
+	uint8_t report[] = {0x00, 0x00, 0x00, val};
 	hid_mouse_send_report(report, sizeof(report));
 
 	return 0;

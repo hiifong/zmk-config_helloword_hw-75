@@ -17,16 +17,16 @@
 
 LOG_MODULE_REGISTER(as5047, CONFIG_ZMK_LOG_LEVEL);
 
-#define ADDR_NOP 0x0000
-#define ADDR_ERRFL 0x0001
-#define ADDR_PROG 0x0003
-#define ADDR_DIAAGC 0x3FFC
-#define ADDR_MAG 0x3FFD
+#define ADDR_NOP      0x0000
+#define ADDR_ERRFL    0x0001
+#define ADDR_PROG     0x0003
+#define ADDR_DIAAGC   0x3FFC
+#define ADDR_MAG      0x3FFD
 #define ADDR_ANGLEUNC 0x3FFE
 #define ADDR_ANGLECOM 0x3FFF
 
 #define RW_WRITE 0
-#define RW_READ 1
+#define RW_READ  1
 
 struct as5047_config {
 	struct spi_dt_spec bus;
@@ -37,8 +37,9 @@ static inline uint8_t as5047_calc_parc(uint16_t command)
 {
 	uint8_t parc = 0;
 	for (uint8_t i = 0; i < 16; i++) {
-		if (command & 0x1)
+		if (command & 0x1) {
 			parc++;
+		}
 		command >>= 1;
 	}
 	return parc & 0x1;

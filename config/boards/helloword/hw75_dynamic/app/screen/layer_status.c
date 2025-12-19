@@ -20,14 +20,14 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #define DISPLAY_NODE DT_CHOSEN(zephyr_display)
 
-#define SCREEN_W DT_PROP(DISPLAY_NODE, width)
-#define SCREEN_H DT_PROP(DISPLAY_NODE, height)
+#define SCREEN_W  DT_PROP(DISPLAY_NODE, width)
+#define SCREEN_H  DT_PROP(DISPLAY_NODE, height)
 #define ITEM_SIZE MIN(SCREEN_W, SCREEN_H)
 
 #define KEYMAP_NODE DT_INST(0, zmk_keymap)
 
 #define LAYER_CHILD_LEN(node) 1 +
-#define KEYMAP_LAYERS_NUM (DT_FOREACH_CHILD(KEYMAP_NODE, LAYER_CHILD_LEN) 0)
+#define KEYMAP_LAYERS_NUM     (DT_FOREACH_CHILD(KEYMAP_NODE, LAYER_CHILD_LEN) 0)
 
 #define LAYER_LABEL(node)                                                                          \
 	COND_CODE_0(DT_NODE_HAS_PROP(node, label), (NULL), (DT_PROP(node, label))),
@@ -37,8 +37,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 LV_FONT_DECLARE(mono_19);
 LV_FONT_DECLARE(zfull_9);
 
-static const char *layer_names[KEYMAP_LAYERS_NUM] = { DT_FOREACH_CHILD(KEYMAP_NODE, LAYER_LABEL) };
-static const char layer_icons[KEYMAP_LAYERS_NUM][4] = { DT_FOREACH_CHILD(KEYMAP_NODE, LAYER_ICON) };
+static const char *layer_names[KEYMAP_LAYERS_NUM] = {DT_FOREACH_CHILD(KEYMAP_NODE, LAYER_LABEL)};
+static const char layer_icons[KEYMAP_LAYERS_NUM][4] = {DT_FOREACH_CHILD(KEYMAP_NODE, LAYER_ICON)};
 
 static lv_obj_t *layer_name;
 static lv_obj_t *layer_list;
@@ -67,7 +67,7 @@ static void layer_status_update_cb(struct layer_status_state state)
 static struct layer_status_state layer_status_get_state(const zmk_event_t *eh)
 {
 	uint8_t index = zmk_keymap_highest_layer_active();
-	return (struct layer_status_state){ .index = index };
+	return (struct layer_status_state){.index = index};
 }
 
 ZMK_DISPLAY_WIDGET_LISTENER(layer_status_subscribtion, struct layer_status_state,

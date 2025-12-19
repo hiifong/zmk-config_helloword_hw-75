@@ -16,8 +16,8 @@ LOG_MODULE_REGISTER(uart_slip, CONFIG_UART_SLIP_LOG_LEVEL);
 
 #include <zephyr/sys/ring_buffer.h>
 
-#define SLIP_END 0300
-#define SLIP_ESC 0333
+#define SLIP_END     0300
+#define SLIP_ESC     0333
 #define SLIP_ESC_END 0334
 #define SLIP_ESC_ESC 0335
 
