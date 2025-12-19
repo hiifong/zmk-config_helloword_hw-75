@@ -147,10 +147,8 @@ static void usb_comm_thread_entry(void *p1, void *p2, void *p3)
 	}
 }
 
-static int usb_comm_init(const struct device *dev)
+static int usb_comm_init(void)
 {
-	ARG_UNUSED(dev);
-
 	k_sem_init(&usb_comm_sem, 0, 1);
 
 	k_thread_create(&usb_comm_thread, usb_comm_thread_stack,

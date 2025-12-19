@@ -64,10 +64,8 @@ int hid_mouse_wheel_report(int direction, bool pressed)
 	return 0;
 }
 
-int hid_mouse_init(const struct device *dev)
+int hid_mouse_init(void)
 {
-	ARG_UNUSED(dev);
-
 	hid_dev = device_get_binding(CONFIG_HW75_HID_MOUSE_DEVICE_NAME);
 	if (hid_dev == NULL) {
 		LOG_ERR("Unable to locate HID device");

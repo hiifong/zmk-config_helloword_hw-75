@@ -14,10 +14,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #define STORAGE_PARTITION FIXED_PARTITION_ID(storage_partition)
 
-static int storage_init(const struct device *dev)
+static int storage_init(void)
 {
-	ARG_UNUSED(dev);
-
 	int ret;
 
 	const struct flash_area *fa;

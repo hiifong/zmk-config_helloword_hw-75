@@ -67,10 +67,8 @@ static void uart_comm_thread(void *p1, void *p2, void *p3)
 	}
 }
 
-static int uart_comm_init(const struct device *dev)
+static int uart_comm_init(void)
 {
-	ARG_UNUSED(dev);
-
 	k_thread_create(&thread, thread_stack, CONFIG_HW75_UART_COMM_THREAD_STACK_SIZE,
 			(k_thread_entry_t)uart_comm_thread, NULL, NULL, NULL,
 			K_PRIO_COOP(CONFIG_HW75_UART_COMM_THREAD_PRIORITY), 0, K_NO_WAIT);

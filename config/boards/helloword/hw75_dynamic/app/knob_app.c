@@ -311,9 +311,8 @@ static int knob_app_event_listener(const zmk_event_t *eh)
 	return -ENOTSUP;
 }
 
-static int knob_app_init(const struct device *dev)
+static int knob_app_init(void)
 {
-	ARG_UNUSED(dev);
 	int ret;
 
 	memcpy(&knob_prefs, &layer_prefs, sizeof(layer_prefs));

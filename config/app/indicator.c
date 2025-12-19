@@ -209,9 +209,8 @@ static int indicator_event_listener(const zmk_event_t *eh)
 	return -ENOTSUP;
 }
 
-static int indicator_init(const struct device *dev)
+static int indicator_init(void)
 {
-	ARG_UNUSED(dev);
 	int ret;
 
 	led_strip = DEVICE_DT_GET(STRIP_CHOSEN);

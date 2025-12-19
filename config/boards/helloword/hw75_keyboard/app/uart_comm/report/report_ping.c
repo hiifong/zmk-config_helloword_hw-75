@@ -24,10 +24,8 @@ static void report_ping_tick(struct k_work *work)
 	k_work_schedule(&report_ping_work, K_MSEC(PING_REPORT_INTERVAL_MS));
 }
 
-static int report_ping_init(const struct device *dev)
+static int report_ping_init(void)
 {
-	ARG_UNUSED(dev);
-
 	report_ping_tick(&report_ping_work.work);
 
 	return 0;

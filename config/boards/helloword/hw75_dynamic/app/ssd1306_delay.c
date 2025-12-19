@@ -14,9 +14,8 @@
 // initialization.
 #define PRE_DISPLAY_INIT_PRIORITY 80
 
-static int ssd1306_delay(const struct device *dev)
+static int ssd1306_delay(void)
 {
-	ARG_UNUSED(dev);
 	k_msleep(100);
 	return 0;
 }
