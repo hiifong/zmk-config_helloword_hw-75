@@ -3,6 +3,18 @@ manifest:
     - name: zmk
       url: https://github.com/xingrz/zmk.git
       revision: zmkx-rel-20251219
-      import: app/west.yml
+      clone-depth: 10
+      import:
+        file: app/west.yml
+        name-allowlist:
+          - cmsis
+          - cmsis-dsp
+          - segger
+          - hal_stm32
+          - lvgl
+          - nanopb
+          - picolibc
+          - zephyr
+          - zmk-studio-messages
   self:
     path: config
