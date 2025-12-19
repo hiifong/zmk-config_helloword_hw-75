@@ -39,7 +39,7 @@ function(LV_FONT_CONV OUT SRC)
 
     add_custom_command(
         OUTPUT ${FONT_OUT}
-        COMMAND lv_font_conv
+        COMMAND npx lv_font_conv
         ARGS    --size ${FONT_SIZE}
                 --output "${FONT_OUT}"
                 --bpp ${LV_FONT_CONV_BPP}
