@@ -181,7 +181,8 @@ static int knob_app_settings_load_cb(const char *name, size_t len, settings_read
 					LOG_DBG("Loaded knob pref %d for layer %d \"%s\": mode=%d, "
 						"ppr=%d, torque_limit=%.03f",
 						i, j, knob_prefs[j].name, knob_prefs[j].mode,
-						knob_prefs[j].ppr, knob_prefs[j].torque_limit);
+						knob_prefs[j].ppr,
+						(double)knob_prefs[j].torque_limit);
 
 					break;
 				}

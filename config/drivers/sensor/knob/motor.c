@@ -103,7 +103,7 @@ int motor_calibrate_auto(const struct device *dev)
 
 	encoder_update(&data->encoder_state, config->encoder);
 	float mid_angle = encoder_get_full_angle(&data->encoder_state);
-	LOG_DBG("Read angle 1: %f (%f deg)", mid_angle, rad_to_deg(mid_angle));
+	LOG_DBG("Read angle 1: %f (%f deg)", (double)mid_angle, (double)rad_to_deg(mid_angle));
 
 	for (int i = 500; i >= 0; i--) {
 		motor_set_phase_voltage(dev, data->voltage_limit_calib, 0.0f,
@@ -113,13 +113,13 @@ int motor_calibrate_auto(const struct device *dev)
 
 	encoder_update(&data->encoder_state, config->encoder);
 	float end_angle = encoder_get_full_angle(&data->encoder_state);
-	LOG_DBG("Read angle 2: %f (%f deg)", end_angle, rad_to_deg(end_angle));
+	LOG_DBG("Read angle 2: %f (%f deg)", (double)end_angle, (double)rad_to_deg(end_angle));
 
 	motor_set_phase_voltage(dev, 0.0f, 0.0f, 0.0f);
 	k_msleep(200);
 
 	float angle_delta = fabsf(mid_angle - end_angle);
-	LOG_DBG("Angle delta: %f (%f deg)", angle_delta, rad_to_deg(angle_delta));
+	LOG_DBG("Angle delta: %f (%f deg)", (double)angle_delta, (double)rad_to_deg(angle_delta));
 
 	if (angle_delta <= 0.0f) {
 		LOG_ERR("No movement detected");
@@ -142,7 +142,8 @@ int motor_calibrate_auto(const struct device *dev)
 	encoder_update(&data->encoder_state, config->encoder);
 	data->zero_offset = 0.0f;
 	data->zero_offset = motor_get_electrical_angle(dev);
-	LOG_INF("Zero offset: %f (%f deg)", data->zero_offset, rad_to_deg(data->zero_offset));
+	LOG_INF("Zero offset: %f (%f deg)", (double)data->zero_offset,
+		(double)rad_to_deg(data->zero_offset));
 
 	inverter_stop(config->inverter);
 	LOG_INF("Calibration finished");
