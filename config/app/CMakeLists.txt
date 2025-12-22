@@ -1,5 +1,7 @@
-# Copyright (c) 2022-2023 XiNGRZ
+# Copyright (c) 2022-2025 XiNGRZ
 # SPDX-License-Identifier: MIT
+
+zephyr_library_named(helloword_app)
 
 zephyr_include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
