@@ -108,6 +108,9 @@
 		chain-length = <11>;
 		scan-masks = [FF FF FF FF FF FF FF FF FF FF FF];
 		parallel-load-gpios = <&gpiob 4 GPIO_ACTIVE_LOW>;
+		debounce-press-ms = <2>;
+		debounce-release-ms = <3>;
+		poll-period-ms = <1>;
 	};
 };
 
