@@ -18,7 +18,7 @@ config UART_SLIP_INIT_PRIORITY
 
 config UART_SLIP_RX_RING_BUFFER_SIZE
 	int
-	default 1024
+	default 256
 
 module = UART_SLIP
 module-str = uart_slip

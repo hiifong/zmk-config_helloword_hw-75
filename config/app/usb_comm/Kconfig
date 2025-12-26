@@ -18,15 +18,15 @@ config HW75_USB_COMM_THREAD_PRIORITY
 
 config HW75_USB_COMM_THREAD_STACK_SIZE
 	int
-	default 1024
+	default 768
 
 config HW75_USB_COMM_MAX_TX_MESSAGE_SIZE
 	int
-	default 512
+	default 256
 
 config HW75_USB_COMM_MAX_RX_MESSAGE_SIZE
 	int
-	default 512
+	default 256
 
 config HW75_USB_COMM_MAX_BYTES_FIELD_SIZE
 	int
