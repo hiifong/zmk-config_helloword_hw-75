@@ -34,6 +34,7 @@ jobs:
           apt-get install -y nodejs
           pip install -U fonttools
           npm install -g lv_font_conv
+          sudo chown -R $(whoami) /github/home
 
       - name: Cache west modules
         uses: actions/cache@v5
