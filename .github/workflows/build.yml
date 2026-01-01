@@ -79,7 +79,7 @@ jobs:
           cp build/zephyr/zmk.bin "build/artifacts/${{ matrix.board }}-zmk.bin"
 
       - name: Archive
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: firmware
           path: build/artifacts
@@ -95,7 +95,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v6
         with:
           name: firmware
           path: firmware
